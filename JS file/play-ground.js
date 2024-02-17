@@ -1,3 +1,7 @@
 function playNow(){
-    console.log("The game will start now")
+    const playNowSection = document.getElementById('play-section');
+    playNowSection.classList.add('hidden');
+
+    const playGroundSection = document.getElementById('play-ground');
+    playGroundSection.classList.remove('hidden');
 }
