@@ -1,11 +1,16 @@
-// function playNow(){
-//     const playNowSection = document.getElementById('play-section');
-//     playNowSection.classList.add('hidden');
+function continueGame(){
+    const alphabet = gameLoop();
+    // console.log(alphabet);
 
-//     const playGroundSection = document.getElementById('play-ground');
-//     playGroundSection.classList.remove('hidden');
-// }
+    const currentAlphabetElement = document.getElementById('current-alphabet');
+    currentAlphabetElement.innerText = alphabet;
+
+    // Set the keyboard background color
+    setBackgroundColorById(alphabet);
+}
+
 function playNow(){
     hiddenElementById('play-section');
     addElementById('play-ground');
+    continueGame();
 }
