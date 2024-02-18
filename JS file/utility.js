@@ -70,11 +70,11 @@ function playerKeyPress(event) {
         const lifeScore = getTextValueById('life-score');
         const newLifeScore = lifeScore-1;
         setTextValueById('life-score', newLifeScore)
-        if (newLifeScore === 0) {
+        if (newLifeScore === 0) { 
             hiddenElementById('play-ground');
             addElementById('score-section');
-            const allScore = getTextValueById('over-all-score');
-            const updateAllScore = allScore + 1 
+            const currentScore = getTextValueById('current-score');
+            setTextValueById('over-all-score', currentScore)
         }
     }
 }
