@@ -44,6 +44,8 @@ function setTextValueById(elementId,value){
     element.innerText=value;
 }
 
+const audio = new Audio();
+
 function playerKeyPress(event) {
     const userKeyPressAlphabet = event.key;
     const displayAlphabets = document.getElementById('current-alphabet');
@@ -58,6 +60,10 @@ function playerKeyPress(event) {
         // const newScore = score + 1;
         // currentScoreElement.innerText = newScore;
         // ----------------------------------------
+        // Set audio if user click the right key
+        audio.src = "./audio/mixkit-instant-win-2021.wav";
+        audio.play();
+        audio.volume = 0.5
         // Set the innerText Score;
         const scoreValue = getTextValueById('current-score');
         const updateScore = scoreValue + 1;
@@ -67,10 +73,16 @@ function playerKeyPress(event) {
         continueGame();
     }
     else {
+        audio.src = "./audio/wrong.wav"
+        audio.play();
+        audio.volume=0.5;
         const lifeScore = getTextValueById('life-score');
         const newLifeScore = lifeScore-1;
         setTextValueById('life-score', newLifeScore)
         if (newLifeScore === 0) { 
+            audio.src = "./audio/afterScore.wav"
+            audio.play();
+            audio.volume = 0.5;
             hiddenElementById('play-ground');
             addElementById('score-section');
             const currentScore = getTextValueById('current-score');
@@ -93,6 +105,9 @@ function continueGame() {
 }
 
 function playAgain() {
+    audio.src = "./audio/playGame.wav"
+    audio.play();
+    audio.volume=0.5;
     hiddenElementById('score-section');
     addElementById('play-ground');
     const currentScore = document.getElementById('current-score');
